@@ -33,12 +33,13 @@ public class UserController {
 
     /**
      * 获取所有用户
+     *
      * @return 所有用户的集合
      */
     @GetMapping("/getAllUser")
     @ApiOperation(value = "获取所有用户")
     @RequiresPermissions("管理员系统管理")
-    public R<List<User>> getAllUser(){
+    public R<List<User>> getAllUser() {
         return R.success(userService.list());
     }
 
@@ -46,8 +47,8 @@ public class UserController {
     /**
      * 由 shiro 主导的登录方法
      *
-     * @param code         员工id，唯一凭证，用户主体
-     * @param password        密码
+     * @param code       员工id，唯一凭证，用户主体
+     * @param password   密码
      * @param rememberMe 是否记住我
      * @return 登录成功
      */
