@@ -23,7 +23,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
-    private final QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
+    private final QueryWrapper<User> queryWrapper = new QueryWrapper<>();
 
     /**
      * 根据id查询用户

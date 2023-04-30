@@ -3,6 +3,7 @@ package com.lsu.lkrf.controller;
 import com.lsu.lkrf.bean.User;
 import com.lsu.lkrf.service.UserService;
 import com.lsu.lkrf.tool.R;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +23,8 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
+@Api(tags = "用户模块")
 public class UserController {
 
     private final UserService userService;
@@ -36,7 +38,7 @@ public class UserController {
      *
      * @return 所有用户的集合
      */
-    @GetMapping("/getAllUser")
+    @GetMapping
     @ApiOperation(value = "获取所有用户")
     @RequiresPermissions("管理员系统管理")
     public R<List<User>> getAllUser() {
@@ -53,7 +55,7 @@ public class UserController {
      * @return 登录成功
      */
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "code", value = "员工账号", required = false, dataTypeClass = String.class),
+            @ApiImplicitParam(name = "code", value = "员工账号", required = true, dataTypeClass = String.class),
             @ApiImplicitParam(name = "password", value = "密码", required = true, dataTypeClass = String.class),
             @ApiImplicitParam(name = "rememberMe", value = "是否记住我", dataTypeClass = Boolean.class)
     })

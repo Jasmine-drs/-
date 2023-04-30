@@ -83,7 +83,7 @@ public class ShiroConfig {
         DefaultShiroFilterChainDefinition defaultShiroFilterChainDefinition = new DefaultShiroFilterChainDefinition();
         /*设置不认证就可以访问的资源*/
 //        放行两个URL，一个是登录页面的URL，一个是后端接口的URL，因为表单提交需要访问这个接口路径
-        defaultShiroFilterChainDefinition.addPathDefinition("/user/login", "anon");//   后端接口的URL
+        defaultShiroFilterChainDefinition.addPathDefinition("/users/login", "anon");//   后端接口的URL
         defaultShiroFilterChainDefinition.addPathDefinition("/static/index.html", "anon");
 //        配置对应的登出过滤器
         defaultShiroFilterChainDefinition.addPathDefinition("/logout", "logout");
