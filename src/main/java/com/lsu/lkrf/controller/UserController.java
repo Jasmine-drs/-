@@ -61,7 +61,7 @@ public class UserController {
     })
     @ApiOperation(value = "登录")
     @PostMapping("/login")
-    public R<String> login(String code, String password, @RequestParam(defaultValue = "false") boolean rememberMe) {
+    public R<User> login(String code, String password, @RequestParam(defaultValue = "false") boolean rememberMe) {
         System.out.println("UserController.login");
 //        使用 shiro 进行登录
         Subject subject = SecurityUtils.getSubject();
@@ -72,6 +72,6 @@ public class UserController {
         if (log.isDebugEnabled()) {
             log.info("code=>{}+pwd=>{}+rememberMe=>{}", code, password, rememberMe);
         }
-        return R.success("登录成功");
+        return R.success(userService.selectOne(code,password));
     }
 }

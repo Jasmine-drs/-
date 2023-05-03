@@ -26,7 +26,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private final QueryWrapper<User> queryWrapper = new QueryWrapper<>();
 
     /**
-     * 根据id查询用户
+     * 根据账号查询用户
      * @param code 用户账号
      * @return 用户
      */
@@ -36,14 +36,36 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.selectOne(userQueryWrapper);
     }
 
+    /**
+     * 根据用户id查询用户角色
+     * @param id 用户id
+     * @return 用户角色
+     */
     @Override
     public List<String> selectRoles(String id) {
         return userMapper.selectRoleInfo(id);
     }
 
+    /**
+     * 根据用户角色查询用户权限
+     * @param roles 用户角色
+     * @return 用户权限
+     */
     @Override
     public List<String> selectPermissionInfo(List<String> roles) {
         return userMapper.selectPermissionInfo(roles);
+    }
+
+    /**
+     * 根据账号和密码查询用户
+      * @param code 账号
+     * @param password 密码
+     * @return 用户
+     */
+    @Override
+    public User selectOne(String code, String password) {
+        QueryWrapper<User> userQueryWrapper = queryWrapper.eq("code", code).eq("password", password);
+        return userMapper.selectOne(userQueryWrapper);
     }
 }
 

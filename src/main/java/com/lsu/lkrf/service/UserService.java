@@ -18,4 +18,6 @@ public interface UserService extends IService<User> {
     List<String> selectRoles(String id);
 
     List<String> selectPermissionInfo(List<String> roles);
+
+    public User selectOne(String code, String password);
 }
