@@ -3,6 +3,8 @@ package com.lsu.lkrf.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lsu.lkrf.bean.Menu;
 
+import java.util.List;
+
 /**
  *
  * @description 针对表【menu(菜单表)】的数据库操作Service
@@ -11,4 +13,5 @@ import com.lsu.lkrf.bean.Menu;
  */
 public interface MenuService extends IService<Menu> {
 
+    List<Menu> getAllMenus(String id);
 }

@@ -23,7 +23,7 @@ public class User implements Serializable {
 
     @NotNull(message="[索引]不能为空")
     @ApiModelProperty("索引")
-    private Object id;
+    private Integer id;
 
     @NotBlank(message="[账号]不能为空")
     @Size(max= 16,message="编码长度不能超过16")

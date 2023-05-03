@@ -19,4 +19,13 @@
         up_id,state,remark,
         update_time
     </sql>
+    <select id="getAllMenus" resultType="com.lsu.lkrf.bean.Menu">
+        select name from menu where id in(
+            select id_menu from privilege_menu where id_privilege in(
+                select id_privilege from role_privilege where id_role=(
+                    select role from user where user.id=#{id} and state=1
+                    )and state=1
+                )and state=1
+            )and state=1
+    </select>
 </mapper>
