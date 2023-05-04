@@ -3,8 +3,6 @@ package com.lsu.lkrf;
 import com.lsu.lkrf.bean.Menu;
 import com.lsu.lkrf.service.MenuService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,7 +14,6 @@ import java.util.List;
  */
 
 @SpringBootTest
-@ExtendWith(MockitoExtension.class)
 public class MenuTests {
     @Autowired
     private MenuService menuService;
