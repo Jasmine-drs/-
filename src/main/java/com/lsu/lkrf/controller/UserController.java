@@ -104,7 +104,7 @@ public class UserController {
         userService.save(user);
         return R.success(userService.list());
     }
-
+//TODO
     /**
      * 删除用户
      *
@@ -122,4 +122,23 @@ public class UserController {
         }
         return R.success(userService.list());
     }
+
+    /**
+     * 用户修改自身信息
+     *
+     * @param user 用户对象
+     * @return 用户信息
+     */
+    @ApiOperation(value = "修改用户")
+    @PutMapping
+    @RequiresPermissions("管理员系统管理")
+    @NotNull(message = "用户对象不能为空")
+    public R<User> updateUser(@RequestBody User user) {
+        boolean b = userService.updateById(user);
+        if (!b) {
+            return R.err("修改失败,该用户不存在或已被删除");
+        }
+        return R.success(userService.getById(user.getId()));
+    }
+
 }
