@@ -17,8 +17,8 @@ import java.util.List;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-    @Select("select name from role where id=#{id} and state=1")
-    List<String> selectRoleInfo(@Param("id") String id);
+    @Select("select name from role where id in (select role_id from user_role where user_code=#{code}) and state=1 ")
+    List<String> selectRoleInfo(@Param("code") String code);
 
     List<String> selectPermissionInfo(@Param("roles") List<String> roles);
 }

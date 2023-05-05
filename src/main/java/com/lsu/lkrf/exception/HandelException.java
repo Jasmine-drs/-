@@ -4,6 +4,7 @@ import com.lsu.lkrf.tool.R;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -86,6 +87,17 @@ public class HandelException {
     public R<String> authenticationException(AuthenticationException e) {
         e.printStackTrace();
         return R.err("请先登录");
+    }
+
+    /**
+     * 未登录直接调用接口
+     * @param e 未经身份验证的异常
+     * @return  提示信息
+     */
+    @ExceptionHandler(UnauthenticatedException.class)
+    public R<String> unauthenticatedException(UnauthenticatedException e) {
+        e.printStackTrace();
+        return R.err("未登录直接调用接口");
     }
 
     /**

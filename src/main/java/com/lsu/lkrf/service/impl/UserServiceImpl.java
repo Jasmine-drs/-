@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lsu.lkrf.bean.User;
 import com.lsu.lkrf.mapper.UserMapper;
 import com.lsu.lkrf.service.UserService;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
-    private final QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+
 
     /**
      * 根据账号查询用户
@@ -32,6 +33,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
     @Override
     public User selectById(String code) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         QueryWrapper<User> userQueryWrapper = queryWrapper.eq("code", code);
         return userMapper.selectOne(userQueryWrapper);
     }
@@ -58,13 +60,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * 根据账号和密码查询用户
-      * @param code 账号
+     * @param code 账号
      * @param password 密码
      * @return 用户
      */
     @Override
     public User selectOne(String code, String password) {
-        QueryWrapper<User> userQueryWrapper = queryWrapper.eq("code", code).eq("password", password);
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        Md5Hash md5Hash2 = new Md5Hash(password, "so", 3);
+        QueryWrapper<User> userQueryWrapper = queryWrapper.eq("code",code).eq("password", md5Hash2.toString());
         return userMapper.selectOne(userQueryWrapper);
     }
 }

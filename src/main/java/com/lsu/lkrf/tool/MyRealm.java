@@ -38,9 +38,9 @@ public class MyRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         System.out.println("MyRealm.doGetAuthorizationInfo");
-//        获取用户名
+//        获取用户id
         Object primaryPrincipal = principalCollection.getPrimaryPrincipal();
-//        根据用户名查询数据库对应的角色信息
+//        根据用户id查询数据库对应的角色信息
         List<String> roles = userService.selectRoles(primaryPrincipal.toString());
 //        获取用户的权限信息，细粒度授权才需要权限信息，一般用角色信息就可以授权完成
         List<String> permissionInfo = userService.selectPermissionInfo(roles);

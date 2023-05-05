@@ -31,7 +31,7 @@
     <select id="selectPermissionInfo" resultType="java.lang.String">
         select privilege.name
         from privilege
-        where privilege.id in (select role_privilege.id_p
+        where privilege.id in (select role_privilege.id_privilege
         from role_privilege
         where role_privilege.id_role in (select role.id
         from role
@@ -40,8 +40,8 @@
             <foreach collection="roles" item="roleName" open="(" separator="," close=")">
                 #{roleName}
             </foreach>
+            and role.state = 1
         </if>
-        and role.state = 1
         )and role_privilege.state = 1
         )and privilege.state = 1
     </select>
