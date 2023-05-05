@@ -14,6 +14,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -87,5 +88,38 @@ public class UserController {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
         return R.success("登出成功");
+    }
+
+    /**
+     * 添加用户
+     *
+     * @param user 用户对象
+     * @return 所有用户的集合
+     */
+    @ApiOperation(value = "添加用户")
+    @PostMapping
+    @RequiresPermissions("管理员系统管理")
+    @NotNull(message = "用户对象不能为空")
+    public R<List<User>> addUser(@RequestBody User user) {
+        userService.save(user);
+        return R.success(userService.list());
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param id 用户id
+     * @return 所有用户的集合
+     */
+    @ApiOperation(value = "删除用户")
+    @DeleteMapping("/{id}")
+    @RequiresPermissions("管理员系统管理")
+    @NotNull(message = "用户id不能为空")
+    public R<List<User>> deleteUser(@PathVariable Integer id) {
+        boolean b = userService.removeById(id);
+        if (!b) {
+            return R.err("删除失败,该用户不存在或已被删除");
+        }
+        return R.success(userService.list());
     }
 }
