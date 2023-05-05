@@ -74,4 +74,18 @@ public class UserController {
         }
         return R.success(userService.selectOne(code,password));
     }
+
+    /**
+     * 登出方法
+     *
+     * @return 登出成功
+     */
+    @ApiOperation(value = "登出")
+    @GetMapping("/logout")
+    @RequiresPermissions("通用权限（最低）")
+    public R<String> logout() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return R.success("登出成功");
+    }
 }
