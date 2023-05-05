@@ -1,5 +1,7 @@
 package com.lsu.lkrf.bean;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -46,6 +48,7 @@ public class Menu implements Serializable {
     private String remark;
 
     @ApiModelProperty("")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
 }

@@ -1,5 +1,8 @@
 package com.lsu.lkrf.bean;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -56,6 +59,7 @@ public class User implements Serializable {
 
     @NotNull(message="[状态：0 停用，1 启用]不能为空")
     @ApiModelProperty("状态：0 停用，1 启用")
+    @TableLogic
     private Integer state;
 
     @Size(max= 64,message="编码长度不能超过64")
@@ -66,9 +70,11 @@ public class User implements Serializable {
     private Integer staff;
 
     @ApiModelProperty("注册时间")
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
     @ApiModelProperty("更新时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
 }
