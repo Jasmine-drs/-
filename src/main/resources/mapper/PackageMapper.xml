@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lsu.lkrf.mapper.PackageMapper">
+
+    <resultMap id="BaseResultMap" type="com.lsu.lkrf.bean.Package">
+            <id property="id" column="id" jdbcType="OTHER"/>
+            <id property="product" column="product" jdbcType="INTEGER"/>
+            <result property="pac" column="pac" jdbcType="INTEGER"/>
+            <result property="state" column="state" jdbcType="INTEGER"/>
+            <result property="staff" column="staff" jdbcType="INTEGER"/>
+            <result property="time" column="time" jdbcType="TIMESTAMP"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,product,pac,
+        state,staff,time,
+        remark
+    </sql>
+</mapper>
