@@ -1,16 +1,16 @@
 package com.lsu.lkrf.bean;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.NotNull;
-
-import java.io.Serializable;
-
-import java.util.Date;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * 
@@ -24,7 +24,7 @@ public class Package implements Serializable {
 
     @NotNull(message="[]不能为空")
     @ApiModelProperty("")
-    private Object id;
+    private Integer id;
 
     @NotNull(message="[工种、流程]不能为空")
     @ApiModelProperty("工种、流程")
@@ -34,14 +34,15 @@ public class Package implements Serializable {
     @ApiModelProperty("对应package表")
     private Integer pac;
 
-    @ApiModelProperty("")
+    @ApiModelProperty("状态")
     private Integer state;
 
-    @ApiModelProperty("")
+    @ApiModelProperty("工作人员id")
     private Integer staff;
 
-    @ApiModelProperty("")
-    private Date time;
+    @ApiModelProperty("更新时间")
+    @TableField(fill= FieldFill.INSERT_UPDATE)
+    private LocalDateTime time;
 
     @Size(max= 64,message="编码长度不能超过64")
     @ApiModelProperty("")
