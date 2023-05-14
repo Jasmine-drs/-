@@ -11,4 +11,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface PackageService extends IService<Package> {
 
     Package selectById(String id);
+
 }
