@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--上面是头部命名空间-->
+<!--mapper开始就是自己定义的了-->
+<mapper namespace="com.lsu.lkrf.mapper.WorkOrderMapper">    <!--对应的mapper类的包路径-->
+    <resultMap id="WorkOrderResult" type="com.lsu.lkrf.bean.WorkOrder">
+        <id property="id" column="id" jdbcType="OTHER"/>
+        <result property="coNbr" column="co_nbr" jdbcType="VARCHAR"/>
+        <result property="queueName" column="queue_name" jdbcType="VARCHAR"/>
+        <result property="queueId" column="queue_id" jdbcType="INTEGER"/>
+        <result property="wfNbr" column="wf_nbr" jdbcType="VARCHAR"/>
+        <result property="productName" column="product_name" jdbcType="VARCHAR"/>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="materialName" column="material_name" jdbcType="VARCHAR"/>
+        <result property="materialId" column="material_id" jdbcType="VARCHAR"/>
+        <result property="numCp" column="num_cp" jdbcType="INTEGER"/>
+        <result property="unitCp" column="unit_cp" jdbcType="DOUBLE"/>
+        <result property="passRate" column="pass_rate" jdbcType="DOUBLE"/>
+        <result property="operatorName" column="operator_name" jdbcType="VARCHAR"/>
+        <result property="operatorId" column="operator_id" jdbcType="INTEGER"/>
+        <result property="equipmentName" column="equipment_name" jdbcType="VARCHAR"/>
+        <result property="equipmentId" column="equipment_id" jdbcType="INTEGER"/>
+        <result property="mechanicName" column="mechanic_name" jdbcType="VARCHAR"/>
+        <result property="mechanicId" column="mechanic_id" jdbcType="INTEGER"/>
+        <result property="stateName" column="state_name" jdbcType="VARCHAR"/>
+        <result property="stateId" column="state_id" jdbcType="INTEGER"/>
+        <result property="staffName" column="staff_name" jdbcType="VARCHAR"/>
+        <result property="staffId" column="staff_id" jdbcType="INTEGER"/>
+    </resultMap>
+</mapper>
