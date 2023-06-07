@@ -32,7 +32,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @return 用户
      */
     @Override
-    public User selectById(String code) {
+    public User selectByAccount(String code) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         QueryWrapper<User> userQueryWrapper = queryWrapper.eq("code", code);
         return userMapper.selectOne(userQueryWrapper);

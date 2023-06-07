@@ -66,7 +66,7 @@ public class MyRealm extends AuthorizingRealm {
         Object principal = authenticationToken.getPrincipal();
         log.info("用户主体{}", principal);
 //        获取数据库的用户信息（密码）
-        User empInfo = userService.selectById(principal.toString());
+        User empInfo = userService.selectByAccount(principal.toString());
         log.info("getName{}", getName());
         log.info("数据库用户{}", empInfo);
 //        非空判断
