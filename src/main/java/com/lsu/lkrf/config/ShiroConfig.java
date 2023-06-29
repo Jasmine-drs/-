@@ -86,7 +86,7 @@ public class ShiroConfig {
         defaultShiroFilterChainDefinition.addPathDefinition("/users/login", "anon");//   后端接口的URL
         defaultShiroFilterChainDefinition.addPathDefinition("/static/index.html", "anon");
 //        配置对应的登出过滤器
-        defaultShiroFilterChainDefinition.addPathDefinition("/logout", "logout");
+        defaultShiroFilterChainDefinition.addPathDefinition("/users/logout", "logout");
         /*设置需要登录认证的资源路径*/
         defaultShiroFilterChainDefinition.addPathDefinition("/**", "authc");
 //        添加存在用户的过滤器 rememberMe
