@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface UserService extends IService<User> {
 
-    User selectByCode(String id);
+    User selectByAccount(String code);
 
     List<String> selectRoles(String id);
 
